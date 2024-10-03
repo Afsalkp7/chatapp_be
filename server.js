@@ -1,7 +1,10 @@
 import express from 'express'
 import dotenv from 'dotenv'
+
 import authRouter from './router/authRouter.js'
 import messageRouter from './router/messageRouter.js'
+import userRoutes from './router/userRouter.js'
+
 import connectToMongoDB from './database/connect.js';
 import cookieParser from 'cookie-parser';
 
@@ -17,6 +20,7 @@ app.get("/", (req,res)=>{
 
 app.use("/api/auth", authRouter)
 app.use("/api/message", messageRouter)
+app.use("/api/users", userRoutes);
 
 app.listen(PORT , () => {
     connectToMongoDB();
